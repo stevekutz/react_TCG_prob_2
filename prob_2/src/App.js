@@ -1,5 +1,7 @@
-import { WSASYSCALLFAILURE } from 'constants';
 import React, {Component} from 'react';
+import ValidationComp from './ValidationComponent/ValidationComponent'
+
+
 
 import './App.css';
 
@@ -29,6 +31,8 @@ class App extends Component {
                 />
 
                 <p> {this.state.userText}</p>
+                <ValidationComp  textLength = {this.state.userText.length}   />
+
             </div>
         );
     
