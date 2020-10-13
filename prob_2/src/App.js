@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ValidationComp from './ValidationComponent/ValidationComponent'
-
+import CharComponent from './CharComponent/CharComponent'
 
 
 import './App.css';
@@ -12,12 +12,23 @@ class App extends Component {
 
     handleInput = ev => {
         // better way
-        this.setState({[ev.target.name]: ev.target.value})
+        this.setState({[ev.target.name]: ev.target.value});
 
         // another way
         // this.setState({userText: ev.target.value})
 
     }
+
+    deleteChar = (index) => {
+        const userText_copy = this.state.userText.split('');
+        userText_copy.splice(index, 1);
+
+        const updatedUserText = userText_copy.join('');
+        this.setState({userText: updatedUserText});
+    
+    }
+
+
 
     render() {
         return (
@@ -32,6 +43,18 @@ class App extends Component {
 
                 <p> {this.state.userText}</p>
                 <ValidationComp  textLength = {this.state.userText.length}   />
+
+                {this.state.userText.split('').map( (char, index)  => {
+                    return <CharComponent
+                        key = {index}
+                        current_char = {char}
+                        index_val = {index}
+                        deleteCharHandler = {() => this.deleteChar(index)}
+
+                    />
+                
+                    })}
+
 
             </div>
         );
