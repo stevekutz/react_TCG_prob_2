@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import { WSASYSCALLFAILURE } from 'constants';
+import React, {Component} from 'react';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    state = {
+        userText: ''
+    }
+
+    handleInput = ev => {
+        // better way
+        this.setState({[ev.target.name]: ev.target.value})
+
+        // another way
+        // this.setState({userText: ev.target.value})
+
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <input
+                    className = "input_main"
+                    name = 'userText' 
+                    type = "text"  
+                    onChange = {this.handleInput} 
+                    value = {this.state.userText}
+                />
+
+                <p> {this.state.userText}</p>
+            </div>
+        );
+    
+    
+    
+    }
+
 }
 
 export default App;
