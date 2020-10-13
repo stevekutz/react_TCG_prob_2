@@ -1,5 +1,5 @@
 import React from 'react'
-import './validationcomponent.css'
+import './validation_component.css'
 
 
 
